@@ -22,10 +22,38 @@ const RentYourSpace = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    const formDataToSend = new FormData();
+    formDataToSend.append('access_key', '3ba6d144-5fa0-4ca6-a89e-d00fc50189fc');
+    formDataToSend.append('subject', 'New Property Listing Submission - AdHood');
+    formDataToSend.append('from_name', 'AdHood Property Listing System');
+    formDataToSend.append('name', formData.name);
+    formDataToSend.append('email', formData.email);
+    formDataToSend.append('phone', formData.phone);
+    formDataToSend.append('city', formData.city);
+    formDataToSend.append('location', formData.location);
+    formDataToSend.append('address', formData.address);
+    formDataToSend.append('space_type', formData.spaceType);
+    formDataToSend.append('size', formData.size);
+    formDataToSend.append('description', formData.description);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formDataToSend
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        alert('Error submitting listing. Please try again or contact us at info@adhood.co');
+      }
+    } catch (error) {
+      alert('Error submitting listing. Please email us directly at info@adhood.co');
+    }
   };
 
   if (submitted) {

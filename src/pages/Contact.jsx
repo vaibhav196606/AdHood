@@ -16,10 +16,32 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    const formDataToSend = new FormData();
+    formDataToSend.append('access_key', '3ba6d144-5fa0-4ca6-a89e-d00fc50189fc');
+    formDataToSend.append('subject', 'New Contact Form Submission - AdHood');
+    formDataToSend.append('from_name', 'AdHood Contact Form');
+    formDataToSend.append('name', formData.name);
+    formDataToSend.append('email', formData.email);
+    formDataToSend.append('message', formData.message);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formDataToSend
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        alert('Error sending message. Please try again or email us at info@adhood.co');
+      }
+    } catch (error) {
+      alert('Error sending message. Please email us directly at info@adhood.co');
+    }
   };
 
   if (submitted) {
