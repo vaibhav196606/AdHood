@@ -1,0 +1,27 @@
+{
+  "name": "AdHood - Advertising Space Rental Platform",
+  "short_name": "AdHood",
+  "description": "Rent advertising spaces in Hyderabad and earn passive income from your property",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4391fc",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/adhood-favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/adhood-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "finance"],
+  "lang": "en-IN"
+}
+

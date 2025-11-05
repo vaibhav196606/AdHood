@@ -6,8 +6,9 @@ const AdSpaceCard = ({ space }) => {
       <div className="relative overflow-hidden h-64">
         <img
           src={space.image}
-          alt={space.location}
+          alt={`Advertising hoarding space available for rent in ${space.location}, Hyderabad - ₹${space.rate}/${space.rateType}`}
           className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+          loading="lazy"
         />
         <div className="absolute top-4 right-4 bg-white text-primary-600 px-3 py-1 rounded-full text-sm font-semibold shadow-md">
           ₹{space.rate.toLocaleString('en-IN')}/{space.rateType}
